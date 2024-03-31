@@ -1,0 +1,86 @@
+{
+  "root": true,
+  "extends": ["react-config-r13v"],
+
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "jest": {
+        "version": 26
+    }
+  },
+  "rules": {
+    "prettier/prettier": 0,
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "message": "do not import from sibling package",
+            "group":["../../**/src/"]
+          },
+          {
+            "message": "Do not import from Material-UI directly, use UI",
+            "group": ["@material-ui/*", "@mui/*"]
+          },
+          {
+            "message": "Do not import from @emotion directly, use UI",
+            "group": ["@emotion/*"]
+          }
+        ]
+      }
+    ],
+    "no-restricted-globals": ["error", "event", "fdescribe"],
+    "simple-import-sort/imports": [
+      "warn",
+      {
+        "groups": [
+          [
+            "^\\u0000"
+          ],
+          [
+            "^react",
+            "^[^.]"
+          ],
+          [
+            "^src"
+          ],
+          [
+            "^\\."
+          ]
+        ]
+      }
+    ],
+    "@typescript-eslint/consistent-type-definitions": ["warn", "interface"],
+    "@kyleshevlin/prefer-custom-hooks": "off",
+    "react/react-in-jsx-scope": "off",
+    "unicorn/prefer-object-from-entries": "off",
+    "unicorn/prefer-module": "off",
+    "unicorn/prefer-node-protocol": "off",
+    "jest/expect-expect": "off",
+    "jest/valid-title": "off",
+    "unicorn/expiring-todo-comments": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "camelCase": true,
+          "pascalCase": true
+        }
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["./src/ui/**/*.ts", "./src/ui/**/*.tsx"],
+      "rules": {
+          "no-restricted-imports": "off"
+      }
+    }
+  ]
+}
